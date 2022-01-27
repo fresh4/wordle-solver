@@ -5,23 +5,27 @@ def guess(args, dictionary: list):
 
     word = list(args[0])
     hint = list(args[1])
+    allowed_letters = list()
 
     print("Reduced list from:", len(temp_dictionary), "words to")
-    for entry in dictionary: #regis
+    for entry in dictionary:
         for i in range(len(word)):
             letter = word[i]
             if(hint[i] == '+'):
+                allowed_letters.append(letter)
                 if(entry[i] != letter):
                     temp_dictionary.remove(entry)
                     break
-            if(hint[i] == '?'):
+            elif(hint[i] == '?'):
                 if(entry[i] == letter or letter not in entry):
                     temp_dictionary.remove(entry)
                     break
             elif(hint[i] == '-'):
-                if(letter in entry):
+                if(letter in entry and not any(letter in entry for letter in allowed_letters)):
                     temp_dictionary.remove(entry)
                     break
+        allowed_letters = list()
+
 
     dictionary = temp_dictionary.copy()
 
