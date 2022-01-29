@@ -5,7 +5,7 @@ wordles = set_wordles()
 alphabet_score = set_letter_score()
 likely_words = set_likely_words(wordles, alphabet_score)
 
-commands = ["guess", "wordles", "exit", "help"]
+commands = ["guess", "wordles", "exit", "help", "restart", "r"]
 active = True
 
 while active:
@@ -20,6 +20,9 @@ while active:
             print(wordles)
         if cmd == "exit":
             active = False
+        if cmd == "restart" or cmd == "r":
+            print("Starting new session:")
+            wordles = set_wordles()
         if cmd == "help":
             print(help())
     else:

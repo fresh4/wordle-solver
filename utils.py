@@ -1,5 +1,5 @@
 import string
-from english_words import english_words_lower_alpha_set as words
+from english_words import web2_words_set as words
 
 def set_wordles():
     wordles = words.copy()

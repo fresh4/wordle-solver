@@ -25,6 +25,9 @@ def guess(args, dictionary: list):
                 if(letter in entry and letter not in allowed_letters):
                     temp_dictionary.remove(entry)
                     break
+            else:
+                print("Invalid 'hint' argument(s).")
+                return temp_dictionary
 
 
     dictionary = temp_dictionary.copy()
