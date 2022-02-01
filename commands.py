@@ -10,14 +10,16 @@ def guess(args, dictionary: list):
     for entry in dictionary:
         allowed_letters = list()
         for i in range(len(word)):
+            if(hint[i] == '+' or hint[i] == '?'):
+                allowed_letters.append(word[i])
+
+        for i in range(len(word)):
             letter = word[i]
             if(hint[i] == '+'):
-                allowed_letters.append(letter)
                 if(entry[i] != letter):
                     temp_dictionary.remove(entry)
                     break
             elif(hint[i] == '?'):
-                allowed_letters.append(letter)
                 if(entry[i] == letter or letter not in entry):
                     temp_dictionary.remove(entry)
                     break
